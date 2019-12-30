@@ -1,20 +1,13 @@
 ---
 layout: post
-title:  "첫포스트"
-author: 사용자명
+title:  "TEST POST"
+author: Kim, Youngho
 categories: [ Jekyll ]
-image: assets/images/11.jpg
+image: assets/images/_DSC8558.JPG
 featured: true
 hidden: false
 ---
 
 ## 첫 블로그 포스트 입니다.
 
-지킬은 심플한 정적 사이트 생성기 입니다.
-지킬은 심플한 정적 사이트 생성기 입니다.
-지킬은 심플한 정적 사이트 생성기 입니다.
-지킬은 심플한 정적 사이트 생성기 입니다.
-지킬은 심플한 정적 사이트 생성기 입니다.
-지킬은 심플한 정적 사이트 생성기 입니다.
-지킬은 심플한 정적 사이트 생성기 입니다.
-지킬은 심플한 정적 사이트 생성기 입니다.
+TEST
