@@ -22,6 +22,7 @@ plainwhite:
     twitter: graycoral
     github:  graycoral
     linkedIn: in/graycoral
+    instagram: graycoral
     rss: rss
     # dribbble: jekyll
     # facebook: jekyll
@@ -47,7 +48,9 @@ plainwhite:
 # this and add the path to the pages in order as they should show up
 #header_pages:
 # - about.md
-
+```yaml
+show_excerpts: true
+```
 # Build settings
 theme: plainwhite
 
