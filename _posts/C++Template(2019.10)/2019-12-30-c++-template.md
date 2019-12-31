@@ -1,11 +1,10 @@
 ---
 layout: post
-title: "C++ Template(2019. 10, MOOC)"
-date: 2019-10-20 00:00:00 +0800
+title: "1. Template Basic"
+date: 2019-12-31 01:00:00 +0800
 categories: C++ template
 ---
 
-# Template Basic
 ## Template 이란 ?
 
 * Code 를 생성하는 툴
