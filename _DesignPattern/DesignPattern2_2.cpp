@@ -1,10 +1,146 @@
 #include <iostream>
 #include <algorithm>
+#include <string>
+#include <conio.h>
+
 using namespace std;
-#define TEST    (3)
 
-
+#define TEST (3)
+// Policy Base Design
 #if TEST == 1
+/*
+    * List에서 변하는 것과 변하지 않는 것
+        * list의 전방 상비 알고리즘은 변하지 않는 것, 동기화 정책은 교체가 가능해야한다.
+    * 변하는 것을 분리하는 방법
+        * 변하는 것을 가상함수로
+        * 변하는 것을 다른 클래스로
+    * 동기화 정책은 다른 클래스에서도 필요
+        * 전략패턴으로...
+*/
+template<typename T> class List
+{
+public:
+    void push_front(const T& a)
+    {
+        // Lock();
+        // //...
+        // Unlock();
+    }
+};
+List<int> s; //멀티스레드에 안전하지 않다.
+
+int main()
+{
+    s.push_front(10);
+}
+#elif TEST == 2
+/*
+     ```plantuml
+        @startuml
+        class List
+        class ISync<<interface>> {
+        #Lock()
+        #Unlock()
+        }
+        class MutextLoc{
+        +Lock()
+        +Unlock()
+        }
+        class NoLock{
+        +Lock()
+        +Unlock()
+        }
+
+        List *-right- ISync
+        ISync <|-down- MutextLoc
+        ISync <|-down- NoLock
+        @enduml
+        ```
+*/
+struct ISync
+{
+    virtual void Lock() = 0;
+    virtual void UnLock() = 0;
+    virtual ~ISync() {}
+};
+
+// 가상함수는 Inline 치환안됨
+
+template<typename T> class List
+{
+    ISync* pSync;
+public:
+void setSync(ISync* p)  {pSync =p;}
+    void push_front(const T& a)
+    {
+        // Lock();
+        if(pSync != 0) pSync->Lock();
+        // //...
+        // Unlock();
+        if(pSync != 0) pSync->UnLock(); // call 의 overhead 발생
+    }
+};
+
+class MutexLock : public ISync
+{
+    //mutext m;
+public:
+    virtual void Lock() {};
+    virtual void UnLock() {};
+};
+
+List<int> s; //멀티스레드에 안전하지 않다.
+
+int main()
+{
+    s.push_front(10);
+}
+
+#elif TEST == 3
+// 단위 전략 디자인(policy base design)
+/*
+    * 단위 전략 디자인(policy base design)
+        * template 인자를 사용해서 정책 클래스를 교체하는 기술
+        * c++ 기반 라이브러리에서 많이 볼수 있는 디자인 기술
+        * "Modern c++" 서적 참고
+    * 전략패턴 : 가상함수 기반, 느리다 // 실행시간 정책 교체 가능
+    * 단위전력 : 인라인 치환 가능, 빠르다 // 컴파일 시간 정책교체, 실행 시간에 교체 할수 없다.
+*/
+template<typename T, typename ThreadModel> class List
+{
+    ThreadModel tm; // 동기화 정책을 담은 클래스
+public:
+    void push_front(const T& a)
+    {
+        tm.Lock();
+        // //...
+        tm.UnLock();
+    }
+};
+
+class MutexLock
+{
+    //mutext m;
+public:
+    inline void Lock() {cout << "mutext lock" << endl;}
+    inline void UnLock() {cout << "mutext lock" << endl;}
+};
+
+class NoLock
+{
+public:
+    inline void Lock() {} // 컴파일시에 삭제 됨
+    inline void UnLock() {}
+};
+
+List<int, NoLock> s;
+
+int main()
+{
+    s.push_front(10);
+}
+
+#elif TEST == 4
 // Application Framework
 /*
     * 모든 것을 객체로 하자
@@ -62,7 +198,7 @@ MyApp theApp; // ??? 왜???
  // 1. 전역변수 생성자. 기반 클래스 생성자
 
 */
-#elif TEST == 2
+#elif TEST == 5
 // 함수와 정책 : 일반함수와 가성변
 /*
     * 멤버 함수에서 변하는 것
