@@ -50,7 +50,7 @@ class Cusor
     static Coursor instance;
 public:
     static  Cusor& getInstance()
-    {
+      {
         // 유일한 객체를 생상하는 방법
         return instance;
     }
