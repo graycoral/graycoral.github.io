@@ -66,6 +66,6 @@ remote_theme: thelehhman/plainwhite-jekyll
 
 plugins:
   - jekyll-seo-tag
-#  - jekyll-feed
+  - jekyll-feed
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://graycoral.github.io/" # the base hostname & protocol for your site
