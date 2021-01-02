@@ -23,7 +23,7 @@ plainwhite:
   html_lang: "en" # set the lang attribute of the <html> tag for the pages. See here for a list of codes: https://www.w3schools.com/tags/ref_country_codes.asp
   condensed_mobile:
     #- home
-    - page
+    #- page
     - post
 
   # generate social links in footer
@@ -55,8 +55,8 @@ plainwhite:
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
-header_pages:
- - about.md
+# header_pages:
+#  - about.md
 
 navigation:
   - title: AUTOSAR
@@ -73,6 +73,6 @@ remote_theme: thelehhman/plainwhite-jekyll
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-feed
+  # - jekyll-feed
 baseurl: "https://graycoral.github.io/c++/template/modernc++/2019/12/30/post-tree.html" # the subpath of your site, e.g. /blog/
 url: "https://graycoral.github.io/" # the base hostname & protocol for your site
