@@ -51,6 +51,13 @@ plainwhite:
 # - about.md
 
   show_excerpts: true
+  navigation:
+    - title: AUTOSAR
+      url: "/_posts/AUTOSAR"
+    - title: C++ Degign Pattern
+      url: "/_posts/C++DesignPattern(2019.03)"
+    - title: C++ Template
+      url: "/_posts/C++Template(2019.10)"
 
 # Build settings
 theme: plainwhite
