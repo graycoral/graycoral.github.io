@@ -50,16 +50,16 @@ plainwhite:
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
-# header_pages:
-#  - about.md
+header_pages:
+ - about.md
 
-# navigation:
-#   - title: AUTOSAR
-#     url: "/_posts/AUTOSAR"
-#   - title: C++ Degign Pattern
-#     url: "/_posts/C++DesignPattern(2019.03)"
-#   - title: C++ Template
-#     url: "/_posts/C++Template(2019.10)"
+navigation:
+  - title: AUTOSAR
+    url: "/_posts/AUTOSAR"
+  - title: C++ Degign Pattern
+    url: "/_posts/C++DesignPattern(2019.03)"
+  - title: C++ Template
+    url: "/_posts/C++Template(2019.10)"
 
 # Build settings
 theme: plainwhite
