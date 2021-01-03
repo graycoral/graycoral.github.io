@@ -19,7 +19,7 @@ plainwhite:
   disqus_shortname: games
   search: true # set to true to enable searchbar
   dark_mode: true # set to true to add dark mode toggle
-  portfolio_image: "assets/portfolio.png" # the path from the base directory of the site to the image to display (no / at the start)
+  portfolio_image: "assets/YounghoKim.jpg" # the path from the base directory of the site to the image to display (no / at the start)
 
   # generate social links in footer
   social_links:
@@ -66,8 +66,10 @@ theme: plainwhite
 
 remote_theme: thelehhman/plainwhite-jekyll
 
+gems: ['jekyll-plantuml', 'jekyll-seo-tag']
 plugins:
   - jekyll-seo-tag
+  - jekyll-plantuml
   # - jekyll-feed
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://graycoral.github.io/" # the base hostname & protocol for your site
