@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1. Adaptive AUTOSAR Overview"
+title: "Adaptive AUTOSAR Overview"
 date: 2020-11-25 01:00:00 +0800
 categories: AUTOSAR
 ---
