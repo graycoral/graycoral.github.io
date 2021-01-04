@@ -16,6 +16,10 @@ plainwhite:
   tagline: SW Engineer
   date_format: "%b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
+  disqus_shortname: games
+  search: true # set to true to enable searchbar
+  dark_mode: true # set to true to add dark mode toggle
+  portfolio_image: "assets/YounghoKim.jpg" # the path from the base directory of the site to the image to display (no / at the start)
 
   # generate social links in footer
   social_links:
@@ -46,18 +50,26 @@ plainwhite:
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
-#header_pages:
-# - about.md
+header_pages:
+ - about.md
 
-show_excerpts: true
+navigation:
+  - title: AUTOSAR
+    url: "/_posts/AUTOSAR"
+  - title: C++ Degign Pattern
+    url: "/_posts/C++DesignPattern(2019.03)"
+  - title: C++ Template
+    url: "/_posts/C++Template(2019.10)"
 
 # Build settings
 theme: plainwhite
 
 remote_theme: thelehhman/plainwhite-jekyll
 
+gems: ['jekyll-plantuml', 'jekyll-seo-tag']
 plugins:
   - jekyll-seo-tag
-#  - jekyll-feed
+  - jekyll-plantuml
+  # - jekyll-feed
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://graycoral.github.io/" # the base hostname & protocol for your site
