@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "1. Template Basic"
+title: "Template : Template Basic"
 date: 2019-12-31 01:00:00 +0800
 categories: C++ template
 ---
