@@ -8,9 +8,8 @@ categories: Refactoring c++
 # Refactoring
 
 
-## Extract Function (함수 추출하기)
-
-### Extract Function(함수 추출하기)
+## **Extract Function(함수 추출하기)**
+---
   * 함수의 목적(what)을 하는지 위주로 파악 → What으로 함수 이름 추출
   * 함수를 짧게 생각하기 → 6줄 이상이면 Bad Smells 의심해보기
   * 함수가 더 짧아지면 캐쉬가 쉬워져서 컴파일러 최적화가 더 잘 됨
@@ -73,13 +72,14 @@ categories: Refactoring c++
     }
 
     void PrintOwing() {
-    InitOrder();
-    PrintBanner();
-    PrintDetails(CalculateOutstanding());
+        InitOrder();
+        PrintBanner();
+        PrintDetails(CalculateOutstanding());
     }
     ```
 
-### Inline Method / Inline Temp / Replace Temp with Query / Introduce Explanning Variable
+## **Inline Method / Inline Temp / Replace Temp with Query / Introduce Explanning Variable**
+---
 
 * **Inline Method**
   * 메소드 기능이너무 간단해서 메소드명만 봐도 너무 뻔할 때.
@@ -138,6 +138,47 @@ categories: Refactoring c++
     }
   ```
 
-### Introduce Explanning Variable
-* 사용된 수식이 복잡 할 때, 수식의 결과나 수식의 일부분을 용도에 부합하는 직관적인 이름의 임시변수 대입
-* **상황마다 다르므로 잘 판단해서 쓰자**
+* Introduce Explanning Variable
+  * 사용된 수식이 복잡 할 때, 수식의 결과나 수식의 일부분을 용도에 부합하는 직관적인 이름의 임시변수 대입
+  * **상황마다 다르므로 잘 판단해서 쓰자**
+
+## **Split Temporary Variable**
+---
+
+* Split Temporary Variable(임시변수 분리)
+  * 루프나 변수나 값 누적용 임시변수가 아닌 임시 변수에 여러 번 값이 대입 될 때, 각 대입 마다 다른 임시변수를 사용하지 말자
+  ```cpp
+  double GetDistanceTravelled(int time)
+  {
+      double result;
+      double acc = primary_force / mass;
+      int primary_time = min(time, delay);
+      result = 0.5 * acc * primary_time * primary_time;
+      int secondary_time = time - delay;
+      if (secondary_time > 0)
+      {
+          double primary_vel = acc * delay;
+          acc = (primary_force + secondary_force) / mass;
+          result += primary_vel * secondary_time + 0.5 * acc * secondary_time * secondary_time;
+      }
+      return result;
+  }
+  ```
+
+  ```cpp
+  double getPrimaryAcc() {
+    return primary_force / mass;
+  }
+  double GetDistanceTravelled(int time) {
+      double result;
+      int primary_time = min(time, delay);
+      result = 0.5 * getPrimaryAcc() * primary_time * primary_time;
+      int secondary_time = time - delay;
+      if (secondary_time > 0) {
+          double primary_vel = getPrimaryAcc() * delay;
+          const double secondary_acc = (primary_force + secondary_force) / mass;
+          result += primary_vel * secondary_time + 0.5 * secondary_acc * secondary_time * secondary_time;
+      }
+      return result;
+  }
+  ```
