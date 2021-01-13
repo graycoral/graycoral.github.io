@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2. C++ Refactoring"
+title: "Refactoring C++"
 date: 2019-12-05 02:00:00 +0800
 categories: C++ Refactoring
 ---
